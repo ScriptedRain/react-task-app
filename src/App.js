@@ -26,15 +26,20 @@ function App() {
     },
   ])
 
-  //delete task
+  //delete task. Set up back end data to delete the task once its done.
   const deleteTask = (id) => {
-    console.log('delete', id)
+    setTasks(tasks.filter((task) => task.id !== id))
+  }
+
+  //toggle reminder
+  const toggleReminder = (id) => {
+    setTasks(tasks.map((task) => task.id === id ? { ...task, reminder: !task.reminder } : task))
   }
 
   return (
     <div className="container">
       <Header title={1} />
-      <Tasks tasks={tasks} onDelete={deleteTask} />
+      {tasks.length > 0 ?<Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} /> : 'No Tasks Here!'}
     </div>
   );
 }
