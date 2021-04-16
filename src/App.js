@@ -8,14 +8,14 @@ function App() {
   const [tasks, setTasks] = useState([
     {
     id: 1,
-    text: 'mom Appointment',
+    text: 'Icecream Appointment',
     day: 'today',
     reminder: true,
     },
     {
       id: 2,
-      text: 'dad Appointment',
-      day: 'todady',
+      text: 'Bussiness Appointment',
+      day: 'today',
       reminder: true,
     },
     {
@@ -26,10 +26,15 @@ function App() {
     },
   ])
 
+  //delete task
+  const deleteTask = (id) => {
+    console.log('delete', id)
+  }
+
   return (
     <div className="container">
       <Header title={1} />
-      <Tasks tasks={tasks} />
+      <Tasks tasks={tasks} onDelete={deleteTask} />
     </div>
   );
 }
